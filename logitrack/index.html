@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LogiTrack — учёт перевозок</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <span class="eyebrow">PET‑ПРОЕКТ</span>
+        <h1>LogiTrack</h1>
+        <p>Мини‑панель для учёта заявок на перевозку.</p>
+      </div>
+      <button id="seedBtn" class="ghost">Сбросить демо</button>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Поиск по маршруту или клиенту">
+      <select id="statusFilter">
+        <option value="all">Все статусы</option>
+        <option value="new">Новая</option>
+        <option value="route">В рейсе</option>
+        <option value="done">Доставлено</option>
+      </select>
+      <button id="addBtn">+ Новая заявка</button>
+    </section>
+
+    <section class="tableWrap">
+      <table>
+        <thead><tr><th>№</th><th>Клиент</th><th>Маршрут</th><th>Груз</th><th>Стоимость</th><th>Статус</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="empty" class="empty" hidden>Ничего не найдено.</div>
+    </section>
+  </main>
+
+  <dialog id="dialog">
+    <form id="shipmentForm" method="dialog">
+      <h2>Новая заявка</h2>
+      <label>Клиент<input id="client" required maxlength="40"></label>
+      <label>Маршрут<input id="route" required maxlength="60" placeholder="Москва → Казань"></label>
+      <label>Груз<input id="cargo" required maxlength="40" placeholder="Паллеты, 1200 кг"></label>
+      <label>Стоимость, ₽<input id="cost" type="number" min="0" required></label>
+      <div class="actions">
+        <button type="button" class="ghost" id="cancelBtn">Отмена</button>
+        <button type="submit">Добавить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
